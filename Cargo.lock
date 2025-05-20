@@ -1625,6 +1625,13 @@ dependencies = [
 ]
 
 [[package]]
+name = "nvme-test"
+version = "0.0.0"
+dependencies = [
+ "hermit",
+]
+
+[[package]]
 name = "object"
 version = "0.36.7"
 source = "registry+https://github.com/rust-lang/crates.io-index"

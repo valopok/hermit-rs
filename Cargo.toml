@@ -11,6 +11,7 @@ members = [
     "examples/httpd",
     "examples/miotcp",
     "examples/mioudp",
+	"examples/nvme-test",
     "examples/polling",
     "examples/rftrace-example",
     "examples/testtcp",
