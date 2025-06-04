@@ -1,1 +1,4 @@
 /target
+examples/nvme-test/opensbi
+examples/nvme-test/hermit-loader-aarch64
+examples/nvme-test/hermit-loader-riscv64
