@@ -3,7 +3,7 @@ use crate::syscalls::*;
 pub fn run_tests() {
 	println!("Start running tests.");
 	number_of_namespaces();
-    max_buffer_size();
+	max_buffer_size();
 	max_number_of_queue_entries();
 	size_of_namespaces();
 	io_queue_pairs();
@@ -89,26 +89,21 @@ fn io_queue_pairs() {
 			assert!(result.is_err());
 		}
 
-		let result = create_io_queue_pair(i, 2);
-		assert!(result.is_ok());
-		let queue_1 = result.unwrap();
-		let result = create_io_queue_pair(i, 2);
-		assert!(result.is_ok());
-		let queue_2 = result.unwrap();
-		// let result = create_io_queue_pair(i, 2);
-		// assert!(result.is_ok());
-		// let queue_3 = result.unwrap();
-		// let result = create_io_queue_pair(i, max_entries);
-		// assert!(result.is_ok());
-		//       let queue_4 = result.unwrap();
+		let max_number_of_queue_pairs = 2;
+		let mut queue_pairs = Vec::new();
 
-		let result = delete_io_queue_pair(queue_1);
-		assert!(result.is_ok());
-		let result = delete_io_queue_pair(queue_2);
-		assert!(result.is_ok());
-		// let result = delete_io_queue_pair(queue_3);
-		// assert!(result.is_ok());
-		// let result = delete_io_queue_pair(queue_4);
-		// assert!(result.is_ok());
+		(0..max_number_of_queue_pairs).for_each(|_| {
+			let result = create_io_queue_pair(i, 2);
+			assert!(result.is_ok());
+			queue_pairs.push(result.unwrap())
+		});
+
+        let result = create_io_queue_pair(i, 2);
+        assert!(result.is_err());
+
+		queue_pairs.into_iter().for_each(|queue_pair| {
+			let result = delete_io_queue_pair(queue_pair);
+			assert!(result.is_ok());
+		});
 	});
 }

@@ -9,8 +9,7 @@ pub fn get_number_of_namespaces() -> Result<usize, SysNvmeError> {
 
 pub fn get_max_buffer_size() -> Result<usize, SysNvmeError> {
 	let mut max_buffer_size: usize = 0;
-	let exit_code =
-		unsafe { sys_nvme_get_max_buffer_size(&mut max_buffer_size) };
+	let exit_code = unsafe { sys_nvme_get_max_buffer_size(&mut max_buffer_size) };
 	match exit_code {
 		0 => Ok(max_buffer_size),
 		n => Err(SysNvmeError::from(n)),
@@ -145,13 +144,14 @@ pub enum SysNvmeError {
 	DeviceDoesNotExist = 2,
 	CouldNotIdentifyNamespaces = 3,
 	NamespaceDoesNotExist = 4,
-	CouldNotCreateIoQueuePair = 5,
-	CouldNotDeleteIoQueuePair = 6,
-	CouldNotFindIoQueuePair = 7,
-	BufferTooBig = 8,
-	CouldNotAllocateMemory = 9,
-	CouldNotReadFromIoQueuePair = 10,
-	CouldNotWriteToIoQueuePair = 11,
+	MaxNumberOfQueuesReached = 5,
+	CouldNotCreateIoQueuePair = 6,
+	CouldNotDeleteIoQueuePair = 7,
+	CouldNotFindIoQueuePair = 8,
+	BufferTooBig = 9,
+	CouldNotAllocateMemory = 10,
+	CouldNotReadFromIoQueuePair = 11,
+	CouldNotWriteToIoQueuePair = 12,
 }
 
 impl From<usize> for SysNvmeError {
@@ -161,13 +161,14 @@ impl From<usize> for SysNvmeError {
 			2 => SysNvmeError::DeviceDoesNotExist,
 			3 => SysNvmeError::CouldNotIdentifyNamespaces,
 			4 => SysNvmeError::NamespaceDoesNotExist,
-			5 => SysNvmeError::CouldNotCreateIoQueuePair,
-			6 => SysNvmeError::CouldNotDeleteIoQueuePair,
-			7 => SysNvmeError::CouldNotFindIoQueuePair,
-			8 => SysNvmeError::BufferTooBig,
-			9 => SysNvmeError::CouldNotAllocateMemory,
-			10 => SysNvmeError::CouldNotReadFromIoQueuePair,
-			11 => SysNvmeError::CouldNotWriteToIoQueuePair,
+			5 => SysNvmeError::MaxNumberOfQueuesReached,
+			6 => SysNvmeError::CouldNotCreateIoQueuePair,
+			7 => SysNvmeError::CouldNotDeleteIoQueuePair,
+			8 => SysNvmeError::CouldNotFindIoQueuePair,
+			9 => SysNvmeError::BufferTooBig,
+			10 => SysNvmeError::CouldNotAllocateMemory,
+			11 => SysNvmeError::CouldNotReadFromIoQueuePair,
+			12 => SysNvmeError::CouldNotWriteToIoQueuePair,
 			_ => SysNvmeError::UnknownError,
 		}
 	}
