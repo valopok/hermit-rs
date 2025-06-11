@@ -769,7 +769,7 @@ name = "dns"
 version = "0.0.0"
 dependencies = [
  "hermit",
- "hermit-abi 0.5.1",
+ "hermit-abi 0.5.2",
  "time",
  "tiny_http",
 ]
@@ -1168,6 +1168,12 @@ checksum = "fbf6a919d6cf397374f7dfeeea91d974c7c0a7221d0d0f4f20d859d329e53fcc"
 [[package]]
 name = "hermit-abi"
 version = "0.5.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "f154ce46856750ed433c8649605bf7ed2de3bc35fd9d2a9f30cddd873c80cb08"
+
+[[package]]
+name = "hermit-abi"
+version = "0.5.2"
 dependencies = [
  "rustc-std-workspace-alloc",
  "rustc-std-workspace-core",
@@ -1190,7 +1196,7 @@ dependencies = [
  "clap",
  "env_logger",
  "hermit",
- "hermit-abi 0.5.1",
+ "hermit-abi 0.5.2",
  "log",
  "wasi 0.11.1+wasi-snapshot-preview1",
  "wasmtime",
@@ -2893,7 +2899,7 @@ name = "vsock"
 version = "0.1.0"
 dependencies = [
  "hermit",
- "hermit-abi 0.5.1",
+ "hermit-abi 0.5.2",
  "libc",
 ]
 
