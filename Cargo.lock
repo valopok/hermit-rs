@@ -333,9 +333,9 @@ checksum = "3a57a50948117a233b27f9bf73ab74709ab90d245216c4707cc16eea067a50bb"
 
 [[package]]
 name = "cc"
-version = "1.2.36"
+version = "1.2.29"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "5252b3d2648e5eedbc1a6f501e3c795e07025c1e93bbf8bbdd6eef7f447a6d54"
+checksum = "5c1599538de2394445747c8cf7935946e3cc27e9625f889d979bfb2aaf569362"
 dependencies = [
  "find-msvc-tools",
  "shlex",
