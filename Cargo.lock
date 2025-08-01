@@ -1198,6 +1198,7 @@ dependencies = [
  "env_logger",
  "hermit",
  "hermit-abi 0.5.2",
+ "libc",
  "log",
  "wasi 0.11.1+wasi-snapshot-preview1",
  "wasmtime",
