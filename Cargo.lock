@@ -756,9 +756,9 @@ dependencies = [
 
 [[package]]
 name = "deranged"
-version = "0.5.3"
+version = "0.5.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "d630bccd429a5bb5a64b5e94f693bfc48c9f8566418fda4c494cc94f911f87cc"
+checksum = "75d7cc94194b4dd0fa12845ef8c911101b7f37633cda14997a6e82099aa0b693"
 dependencies = [
  "powerfmt",
 ]
@@ -2689,9 +2689,9 @@ dependencies = [
 
 [[package]]
 name = "time"
-version = "0.3.43"
+version = "0.3.42"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "83bde6f1ec10e72d583d91623c939f623002284ef622b87de38cfd546cbf2031"
+checksum = "8ca967379f9d8eb8058d86ed467d81d03e81acd45757e4ca341c24affbe8e8e3"
 dependencies = [
  "deranged",
  "num-conv",
@@ -2702,9 +2702,9 @@ dependencies = [
 
 [[package]]
 name = "time-core"
-version = "0.1.6"
+version = "0.1.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "40868e7c1d2f0b8d73e4a8c7f0ff63af4f6d19be117e90bd73eb1d62cf831c6b"
+checksum = "a9108bb380861b07264b950ded55a44a14a4adc68b9f5efd85aafc3aa4d40a68"
 
 [[package]]
 name = "tiny_http"
