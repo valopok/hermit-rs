@@ -121,6 +121,7 @@ impl KernelSrc {
 				"gem-net",
 				"idle-poll",
 				"mmap",
+                "nvme",
 				"pci",
 				"pci-ids",
 				"rtl8139",
