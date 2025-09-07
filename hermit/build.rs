@@ -131,6 +131,7 @@ impl KernelSrc {
 				"mmap",
 				"nvme",
 				"net",
+				"nvme",
 				"pci",
 				"pci-ids",
 				"rtl8139",
