@@ -9,7 +9,7 @@ run-x86_64: build-x86_64 disk-image
 		-display none \
 		-serial stdio \
 		-kernel hermit-loader-x86_64 \
-		-initrd ../../target/x86_64-unknown-hermit/debug/nvme-test \
+		-initrd ../../target/x86_64-unknown-hermit/release/nvme-test \
 		-drive file=nvme.img,format=raw,if=none,id=nvm \
 		-device nvme,serial=deadbeef,drive=nvm
 
@@ -25,7 +25,7 @@ run-aarch64: build-aarch64 disk-image
 		-display none \
 		-serial stdio \
 		-kernel hermit-loader-aarch64 \
-		-device guest-loader,addr=0x48000000,initrd=../../target/aarch64-unknown-hermit/debug/nvme-test \
+		-device guest-loader,addr=0x48000000,initrd=../../target/aarch64-unknown-hermit/release/nvme-test \
 		-drive file=nvme.img,format=raw,if=none,id=nvm \
 		-device nvme,serial=deadbeef,drive=nvm
 
@@ -41,25 +41,39 @@ run-aarch64: build-aarch64 disk-image
 # 		-serial stdio \
 # 		-bios opensbi/share/opensbi/lp64/generic/firmware/fw_jump.bin \
 # 		-kernel hermit-loader-riscv64 \
-# 		-initrd ../../target/riscv64gc-unknown-hermit/debug/nvme-test \
+# 		-initrd ../../target/riscv64gc-unknown-hermit/release/nvme-test \
 # 		-drive file=nvme.img,format=raw,if=none,id=nvm \
 # 		-device nvme,serial=deadbeef,drive=nvm
 
+.PHONY: run-paddy
+run-paddy: build-x86_64
+	# https://www.qemu.org/docs/master/system/images.html#nvme-disk-images
+	sudo qemu-system-x86_64 \
+		-cpu qemu64,apic,fsgsbase,fxsr,rdrand,rdtscp,xsave,xsaveopt \
+		-smp 1 \
+		-m 512M \
+		-device isa-debug-exit,iobase=0xf4,iosize=0x04 \
+		-display none \
+		-serial stdio \
+		-kernel hermit-loader-x86_64 \
+		-initrd ../../target/x86_64-unknown-hermit/release/nvme-test \
+		-device vfio-pci,host=01:00.0
+
 .PHONY: build-x86_64
 build-x86_64: 
-	HERMIT_LOG_LEVEL_FILTER=DEBUG \
+	HERMIT_LOG_LEVEL_FILTER=ERROR \
 	cargo build -Z build-std=std,core,alloc,panic_abort \
-	--target x86_64-unknown-hermit
+	--target x86_64-unknown-hermit --release
 
 .PHONY: build-aarch64
 build-aarch64: 
-	HERMIT_LOG_LEVEL_FILTER=DEBUG \
+	HERMIT_LOG_LEVEL_FILTER=ERROR \
 	cargo build -Z build-std=std,core,alloc,panic_abort \
-	--target aarch64-unknown-hermit
+	--target aarch64-unknown-hermit --release
 
 # .PHONY: build-riscv64
 # build-riscv64: 
-# 	HERMIT_LOG_LEVEL_FILTER=INFO \
+# 	HERMIT_LOG_LEVEL_FILTER=ERROR \
 # 	cargo build -Z build-std=std,core,alloc,panic_abort \
 # 	--target riscv64gc-unknown-hermit
 
