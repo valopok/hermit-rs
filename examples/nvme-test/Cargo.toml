@@ -8,4 +8,4 @@ hermit = { path = "../../hermit", default-features = false, features = ["nvme"] 
 
 [dependencies]
 rand = "0.9.2"
-vroom = { git = "https://github.com/valopok/vroom", branch = "thesis", default-features = false }
+vroom = { git = "https://github.com/valopok/vroom", branch = "main", default-features = false }

@@ -52,7 +52,6 @@ instrument = []
 
 libc = []
 mmap = []
-nvme = []
 net = []
 nvme = []
 pci = []
