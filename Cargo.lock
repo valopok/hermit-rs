@@ -2940,7 +2940,7 @@ checksum = "0b928f33d975fc6ad9f86c8f283853ad26bdd5b10b7f1542aa2fa15e2289105a"
 [[package]]
 name = "vroom"
 version = "0.1.0"
-source = "git+https://github.com/valopok/vroom?branch=main#b5e9c7f9debccc0b803a489a8177822abd183d9d"
+source = "git+https://github.com/valopok/vroom?branch=main#7ddd6059de197e1b2d5d0a84ca0e205dfa782e51"
 dependencies = [
  "ahash",
  "hashbrown",
