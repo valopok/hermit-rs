@@ -45,20 +45,6 @@ run-aarch64: build-aarch64 disk-image
 # 		-drive file=nvme.img,format=raw,if=none,id=nvm \
 # 		-device nvme,serial=deadbeef,drive=nvm
 
-.PHONY: run-paddy
-run-paddy: build-x86_64
-	# https://www.qemu.org/docs/master/system/images.html#nvme-disk-images
-	sudo qemu-system-x86_64 \
-		-cpu qemu64,apic,fsgsbase,fxsr,rdrand,rdtscp,xsave,xsaveopt \
-		-smp 1 \
-		-m 512M \
-		-device isa-debug-exit,iobase=0xf4,iosize=0x04 \
-		-display none \
-		-serial stdio \
-		-kernel hermit-loader-x86_64 \
-		-initrd ../../target/x86_64-unknown-hermit/release/nvme-test \
-		-device vfio-pci,host=01:00.0
-
 .PHONY: build-x86_64
 build-x86_64: 
 	HERMIT_LOG_LEVEL_FILTER=ERROR \
